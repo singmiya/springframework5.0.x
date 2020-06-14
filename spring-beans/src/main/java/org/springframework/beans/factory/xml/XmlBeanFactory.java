@@ -26,10 +26,15 @@ import org.springframework.core.io.Resource;
  * from an XML document. Delegates to {@link XmlBeanDefinitionReader} underneath; effectively
  * equivalent to using an XmlBeanDefinitionReader with a DefaultListableBeanFactory.
  *
+ * DefaultListableBeanFactory的一个便利扩展，可以用它来读取定义bean的XML文档。（把实际的工作）委托给其下XmlBeanDefinitionReader；
+ * 等效于XmlBeanDefinitionReader和DefaultListableBeanFactory一起使用。
+ *
  * <p>The structure, element and attribute names of the required XML document
  * are hard-coded in this class. (Of course a transform could be run if necessary
  * to produce this format). "beans" doesn't need to be the root element of the XML
  * document: This class will parse all bean definition elements in the XML file.
+ *
+ * XML文档必须的结构、元素和属性的名称都硬编码在了此类中。（）。
  *
  * <p>This class registers each bean definition with the {@link DefaultListableBeanFactory}
  * superclass, and relies on the latter's implementation of the {@link BeanFactory} interface.
