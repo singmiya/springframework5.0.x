@@ -73,7 +73,9 @@ import org.springframework.lang.Nullable;
  * properties file, etc. Implementations are encouraged to support references
  * amongst beans (Dependency Injection).
  *
- *
+ * 通常情况下，BeanFactory将会从存储在配置资源中加载bean定义（如：XML文档），并使用org.springframework.beans包配置beans。
+ * 然而，实现可以简单地返回根据需要直接在Java代码中创建的Java对象。对于（bean）定义如何存储并此处没有约束：LDAP、RDBMS、XML、属性文件等等。
+ * 鼓励在（接口）实现中支持beans之间的引用（依赖注入）。
  *
  * <p>In contrast to the methods in {@link ListableBeanFactory}, all of the
  * operations in this interface will also check parent factories if this is a
@@ -81,8 +83,16 @@ import org.springframework.lang.Nullable;
  * the immediate parent factory will be asked. Beans in this factory instance
  * are supposed to override beans of the same name in any parent factory.
  *
+ * 与ListableBeanFactory中的方法相反，如果这是一个HierarchicalBeanFactory，则此接口中的所有操作还将会检查父factories。
+ * 如果在此factory实例中未找到bean，则从其直接父factory中查找。此factory实例中的beans应该覆盖在任何父factory中的同名beans。
+ *
  * <p>Bean factory implementations should support the standard bean lifecycle interfaces
  * as far as possible. The full set of initialization methods and their standard order is:
+ *
+ * ！！！！！！
+ * Bean factory 实现应尽可能支持标准bean生命周期接口。全套的初始化方法及其标准顺序为：
+ * ！！！！！！
+ *
  * <ol>
  * <li>BeanNameAware's {@code setBeanName}
  * <li>BeanClassLoaderAware's {@code setBeanClassLoader}
@@ -90,7 +100,7 @@ import org.springframework.lang.Nullable;
  * <li>EnvironmentAware's {@code setEnvironment}
  * <li>EmbeddedValueResolverAware's {@code setEmbeddedValueResolver}
  * <li>ResourceLoaderAware's {@code setResourceLoader}
- * (only applicable when running in an application context)
+ * (only applicable when running in an application context) 仅在应用上下文运行时使用
  * <li>ApplicationEventPublisherAware's {@code setApplicationEventPublisher}
  * (only applicable when running in an application context)
  * <li>MessageSourceAware's {@code setMessageSource}
@@ -106,6 +116,9 @@ import org.springframework.lang.Nullable;
  * </ol>
  *
  * <p>On shutdown of a bean factory, the following lifecycle methods apply:
+ *
+ * 当销毁bean factory时，执行以下生命周期方法：
+ *
  * <ol>
  * <li>{@code postProcessBeforeDestruction} methods of DestructionAwareBeanPostProcessors
  * <li>DisposableBean's {@code destroy}
