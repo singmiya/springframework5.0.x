@@ -183,7 +183,7 @@ public class Constants {
 	 * the main logic of this method kicking in.
 	 *
 	 * 返回给定组的所有常量名称（拥有相同前缀）。
-	 * 注意：该方法假定常量命名都是符合标准Java约定的常量值（如：全大写）。
+	 * 注意：该方法假定常量命名都是符合标准Java约定的常量值（即：全大写）。
 	 *
 	 * 方法参数 namePrefix 会在进入主逻辑之前对其进行大写转换。
 	 *
@@ -224,7 +224,7 @@ public class Constants {
 	 * the main logic of this method kicking in.
 	 *
 	 * 返回给定组的所有常量名。
-	 * 该方法假定常量命名都是符合标准Java约定的常量值（例如：全大写）。
+	 * 该方法假定常量命名都是符合标准Java约定的常量值（即：全大写）。
 	 *
 	 * 给定的参数 nameSuffix 在进入主逻辑前会对其进行大写转换。
 	 *
@@ -252,7 +252,7 @@ public class Constants {
 	 * the main logic of this method kicking in.
 	 *
 	 * 返回给定组的所有常量值。
-	 * 该方法假定常量命名都是符合标准Java约定的常量值（例如：全大写）。
+	 * 该方法假定常量命名都是符合标准Java约定的常量值（即：全大写）。
 	 *
 	 * 给定参数 namePrefix 在进入主逻辑前会对其进行大写转换
 	 *
@@ -293,7 +293,7 @@ public class Constants {
 	 * the main logic of this method kicking in.
 	 *
 	 * 返回给定组的所有常量值。
-	 * 该方法假定常量命名都是符合标准Java约定的常量值（例如：全大写）。
+	 * 该方法假定常量命名都是符合标准Java约定的常量值（即：全大写）。
 	 * 在进入主逻辑前方法会对其给定的参数 nameSuffix 进行大写转换。
 	 *
 	 * @param nameSuffix suffix of the constant names to search (may be {@code null}) 要查找的常量名后缀（可能为null）
