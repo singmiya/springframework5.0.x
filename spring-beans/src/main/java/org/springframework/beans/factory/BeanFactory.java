@@ -151,6 +151,10 @@ public interface BeanFactory {
 	 * beans <i>created</i> by the FactoryBean. For example, if the bean named
 	 * {@code myJndiObject} is a FactoryBean, getting {@code &myJndiObject}
 	 * will return the factory, not the instance returned by the factory.
+	 *
+	 * 用于取消FactoryBean实例引用，其区别于由FactoryBean创建的beans。
+	 * 例如：如果名为myJndiObject的bean类型为FactoryBean，获取 &myJndiObject将会返回一个factory，而不是由factory返回的（其他类型bean）实例。
+	 *
 	 */
 	String FACTORY_BEAN_PREFIX = "&";
 
@@ -162,10 +166,16 @@ public interface BeanFactory {
 	 * returned objects in the case of Singleton beans.
 	 * <p>Translates aliases back to the corresponding canonical bean name.
 	 * Will ask the parent factory if the bean cannot be found in this factory instance.
-	 * @param name the name of the bean to retrieve
-	 * @return an instance of the bean
-	 * @throws NoSuchBeanDefinitionException if there is no bean with the specified name
-	 * @throws BeansException if the bean could not be obtained
+	 *
+	 * 返回一个是指定bean的共享或者独立实例。这个方法允许使用Spring BeanFactory来替代单例（Singleton）或原型（Prototype）设计模式。
+	 * 就单例而言，调用者会持有该方法返回对象的引用。
+	 *
+	 * 将别名转换为相应的标准bean名称。如果未从此factory实例中找到bean，将会继续从父factory中寻找。
+	 *
+	 * @param name the name of the bean to retrieve 将要检索的bean的名称
+	 * @return an instance of the bean bean实例
+	 * @throws NoSuchBeanDefinitionException if there is no bean with the specified name 指定名称的bean不存在
+	 * @throws BeansException if the bean could not be obtained 无法获取bean
 	 */
 	Object getBean(String name) throws BeansException;
 
@@ -177,15 +187,26 @@ public interface BeanFactory {
 	 * the result correctly, as can happen with {@link #getBean(String)}.
 	 * <p>Translates aliases back to the corresponding canonical bean name.
 	 * Will ask the parent factory if the bean cannot be found in this factory instance.
-	 * @param name the name of the bean to retrieve
+	 *
+	 * 返回一个指定bean的共享或者单独实例。具体行为与#getBean(String)相同，但，如果bean类型不是所需的类型时，
+	 * 则通过抛出 BeanNotOfRequiredTypeException异常来提供类型安全措施。
+	 * 这意味着，像#getBean(String)方法中那样的，在无法正确的进行类型转换时抛出ClassCastException将不会发生。
+	 *
+	 * 将别名转换为相应的标准bean名称。如果为从此factory实例中找到bean，将会继续从父factory中寻找。
+	 *
+	 * @param name the name of the bean to retrieve 将要检索的bean名称
 	 * @param requiredType type the bean must match. Can be an interface or superclass
 	 * of the actual class, or {@code null} for any match. For example, if the value
 	 * is {@code Object.class}, this method will succeed whatever the class of the
 	 * returned instance.
+	 *
+	 * bean必须匹配的类型。可以是实例类的接口或父类，或可以匹配任何类型的null。
+	 * 例如，如果参数值为Object.class，则不管需要返回的实例是何种类型此方法都会成功。
+	 *
 	 * @return an instance of the bean
-	 * @throws NoSuchBeanDefinitionException if there is no such bean definition
-	 * @throws BeanNotOfRequiredTypeException if the bean is not of the required type
-	 * @throws BeansException if the bean could not be created
+	 * @throws NoSuchBeanDefinitionException if there is no such bean definition bean定义不存在
+	 * @throws BeanNotOfRequiredTypeException if the bean is not of the required type 如果bean不是所需类型
+	 * @throws BeansException if the bean could not be created bean无法创建
 	 */
 	<T> T getBean(String name, @Nullable Class<T> requiredType) throws BeansException;
 
@@ -193,6 +214,9 @@ public interface BeanFactory {
 	 * Return an instance, which may be shared or independent, of the specified bean.
 	 * <p>Allows for specifying explicit constructor arguments / factory method arguments,
 	 * overriding the specified default arguments (if any) in the bean definition.
+	 *
+	 * 返回一个指定bean的共享或单独实例。允许显示的指定构造
+	 *
 	 * @param name the name of the bean to retrieve
 	 * @param args arguments to use when creating a bean instance using explicit arguments
 	 * (only applied when creating a new instance as opposed to retrieving an existing one)
