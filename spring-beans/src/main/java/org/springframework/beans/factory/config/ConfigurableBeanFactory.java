@@ -36,11 +36,17 @@ import org.springframework.util.StringValueResolver;
  * client methods in the {@link org.springframework.beans.factory.BeanFactory}
  * interface.
  *
+ * 配置（Configuration）接口将被大部分bean工厂（factories）实现。除了BeanFactory接口中的bean工厂（factory）客户端方法之外，
+ * 还提供了配置bean工厂的工具。
+ *
  * <p>This bean factory interface is not meant to be used in normal application
  * code: Stick to {@link org.springframework.beans.factory.BeanFactory} or
  * {@link org.springframework.beans.factory.ListableBeanFactory} for typical
  * needs. This extended interface is just meant to allow for framework-internal
  * plug'n'play and for special access to bean factory configuration methods.
+ *
+ * 此bean工厂接口不适合用于常规应用代码中：坚持使用BeanFactory和ListableBeanFactory来满足常规需求。
+ * 此扩展接口仅用于允许框架内部即插即用（plug'n'play）操作及对bean工厂配置方法的特殊访问。
  *
  * @author Juergen Hoeller
  * @since 03.11.2003
@@ -53,6 +59,10 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	/**
 	 * Scope identifier for the standard singleton scope: "singleton".
 	 * Custom scopes can be added via {@code registerScope}.
+	 *
+	 * 标准单例作用域的作用域标识符："singleton"。
+	 * 可以通过 registerScope 添加自定义作用域。
+	 *
 	 * @see #registerScope
 	 */
 	String SCOPE_SINGLETON = "singleton";
@@ -60,6 +70,10 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	/**
 	 * Scope identifier for the standard prototype scope: "prototype".
 	 * Custom scopes can be added via {@code registerScope}.
+	 *
+	 * 标准原型作用域的作用域标识符："prototype"。
+	 * 可以通过 registerScope 添加自定义作用域。
+	 *
 	 * @see #registerScope
 	 */
 	String SCOPE_PROTOTYPE = "prototype";
@@ -69,9 +83,13 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * Set the parent of this bean factory.
 	 * <p>Note that the parent cannot be changed: It should only be set outside
 	 * a constructor if it isn't available at the time of factory instantiation.
+	 *
+	 * 为此bean工厂设置父工厂。
+	 * 注意，父工厂无法改变：仅当在工厂实例化时不可用的时候，才应在构造方法外部设置它。
+	 *
 	 * @param parentBeanFactory the parent BeanFactory
 	 * @throws IllegalStateException if this factory is already associated with
-	 * a parent BeanFactory
+	 * a parent BeanFactory 如果此工厂已与父BeanFactory关联
 	 * @see #getParentBeanFactory()
 	 */
 	void setParentBeanFactory(BeanFactory parentBeanFactory) throws IllegalStateException;
@@ -79,18 +97,30 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	/**
 	 * Set the class loader to use for loading bean classes.
 	 * Default is the thread context class loader.
+	 *
+	 * 设置用于加载bean类的类加载器。默认是线程上下文类加载器（thread context class loader）。
+	 *
 	 * <p>Note that this class loader will only apply to bean definitions
 	 * that do not carry a resolved bean class yet. This is the case as of
 	 * Spring 2.0 by default: Bean definitions only carry bean class names,
 	 * to be resolved once the factory processes the bean definition.
+	 *
+	 * 注意，此类加载器仅适用于未包含已解析的bean类的bean定义。
+	 * Spring2.0默认情况下就是这样：Bean定义仅包含bean类名，一旦工厂处理完bean定义就可就行解析。
+	 *
 	 * @param beanClassLoader the class loader to use,
 	 * or {@code null} to suggest the default class loader
+	 *
+	 *  要使用的类加载器，如果为null则建议使用默认类加载器
 	 */
 	void setBeanClassLoader(@Nullable ClassLoader beanClassLoader);
 
 	/**
 	 * Return this factory's class loader for loading bean classes
 	 * (only {@code null} if even the system ClassLoader isn't accessible).
+	 *
+	 * 返回此工厂用于加载bean类的类加载器（仅在连系统类加载器（ClassLoader）也无法获取时返回null）。
+	 *
 	 * @see org.springframework.util.ClassUtils#forName(String, ClassLoader)
 	 */
 	@Nullable
@@ -99,10 +129,17 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	/**
 	 * Specify a temporary ClassLoader to use for type matching purposes.
 	 * Default is none, simply using the standard bean ClassLoader.
+	 *
+	 * 指定一个用于匹配类型的临时类加载器（ClassLoader）。默认是不存在，只需使用标准的bean加载器（ClassLoader）。
+	 *
 	 * <p>A temporary ClassLoader is usually just specified if
 	 * <i>load-time weaving</i> is involved, to make sure that actual bean
 	 * classes are loaded as lazily as possible. The temporary loader is
 	 * then removed once the BeanFactory completes its bootstrap phase.
+	 *
+	 * 仅在加载时间交织时（load-time weaving），才制定临时类加载器（ClassLoader），确保尽可能延迟加载真正的bean类。
+	 * 一旦BeanFactory的引导阶段完成，就会把临时加载器移除。
+	 *
 	 * @since 2.5
 	 */
 	void setTempClassLoader(@Nullable ClassLoader tempClassLoader);
@@ -110,6 +147,9 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	/**
 	 * Return the temporary ClassLoader to use for type matching purposes,
 	 * if any.
+	 *
+	 * 如果存在的话，就返回用于匹配类型的临时类加载器（ClassLoader）。
+	 *
 	 * @since 2.5
 	 */
 	@Nullable
