@@ -127,7 +127,7 @@ public interface BeanDefinitionRegistry extends AliasRegistry {
 	 * Determine whether the given bean name is already in use within this registry,
 	 * i.e. whether there is a local bean or alias registered under this name.
 	 *
-	 * 确定给定的bean名称是否已在此注册表中使用。例如：此名称下已存在本地bean或已注册过别名。
+	 * 确定给定的bean名称是否已在此注册表中使用。即此名称下已存在本地bean或已注册过别名。
 	 *
 	 * @param beanName the name to check
 	 * @return whether the given bean name is already in use
