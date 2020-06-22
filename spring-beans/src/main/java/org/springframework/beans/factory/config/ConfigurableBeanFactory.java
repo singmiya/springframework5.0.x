@@ -137,7 +137,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * classes are loaded as lazily as possible. The temporary loader is
 	 * then removed once the BeanFactory completes its bootstrap phase.
 	 *
-	 * 仅在加载时间交织时（load-time weaving），才制定临时类加载器（ClassLoader），确保尽可能延迟加载真正的bean类。
+	 * 仅在加载时间交织时（load-time weaving），才指定临时类加载器（ClassLoader），确保尽可能延迟加载真正的bean类。
 	 * 一旦BeanFactory的引导阶段完成，就会把临时加载器移除。
 	 *
 	 * @since 2.5
