@@ -29,6 +29,8 @@ import org.springframework.util.StringUtils;
  * Utility methods that are useful for bean definition reader implementations.
  * Mainly intended for internal use.
  *
+ * 对bean定义读取器实现有用的方法。主要供内部使用。
+ *
  * @author Juergen Hoeller
  * @author Rob Harrop
  * @since 1.1
@@ -40,6 +42,9 @@ public class BeanDefinitionReaderUtils {
 	/**
 	 * Separator for generated bean names. If a class name or parent name is not
 	 * unique, "#1", "#2" etc will be appended, until the name becomes unique.
+	 *
+	 * 生成的bean名称的分隔符。如果类名或父类名不唯一，将会在名称上拼接"#1"、"#2"等，直到名称唯一为止。
+	 *
 	 */
 	public static final String GENERATED_BEAN_NAME_SEPARATOR = BeanFactoryUtils.GENERATED_BEAN_NAME_SEPARATOR;
 
@@ -47,6 +52,9 @@ public class BeanDefinitionReaderUtils {
 	/**
 	 * Create a new GenericBeanDefinition for the given parent name and class name,
 	 * eagerly loading the bean class if a ClassLoader has been specified.
+	 *
+	 *
+	 *
 	 * @param parentName the name of the parent bean, if any
 	 * @param className the name of the bean class, if any
 	 * @param classLoader the ClassLoader to use for loading bean classes
