@@ -25,11 +25,17 @@ import org.springframework.lang.Nullable;
  * Simple {@link ProblemReporter} implementation that exhibits fail-fast
  * behavior when errors are encountered.
  *
+ * 当出现错误时展示快速失败（fail-fast）行为的简单ProblemReporter实现。
+ *
  * <p>The first error encountered results in a {@link BeanDefinitionParsingException}
  * being thrown.
  *
+ * 遇到的第一个错误导致抛出BeanDefinitionParsingException异常。
+ *
  * <p>Warnings are written to
  * {@link #setLogger(org.apache.commons.logging.Log) the log} for this class.
+ *
+ * 警告则写入到此类的日志中。
  *
  * @author Rob Harrop
  * @author Juergen Hoeller
@@ -45,6 +51,9 @@ public class FailFastProblemReporter implements ProblemReporter {
 	 * Set the {@link Log logger} that is to be used to report warnings.
 	 * <p>If set to {@code null} then a default {@link Log logger} set to
 	 * the name of the instance class will be used.
+	 *
+	 * 设置用于报告警告的logger。如果设置null，则使用设置为默认实例类名称的logger。
+	 *
 	 * @param logger the {@link Log logger} that is to be used to report warnings
 	 */
 	public void setLogger(@Nullable Log logger) {
@@ -55,6 +64,9 @@ public class FailFastProblemReporter implements ProblemReporter {
 	/**
 	 * Throws a {@link BeanDefinitionParsingException} detailing the error
 	 * that has occurred.
+	 *
+	 * 抛出一个详细描述发生错误的BeanDefinitionParsingException异常。
+	 *
 	 * @param problem the source of the error
 	 */
 	@Override
@@ -65,6 +77,9 @@ public class FailFastProblemReporter implements ProblemReporter {
 	/**
 	 * Throws a {@link BeanDefinitionParsingException} detailing the error
 	 * that has occurred.
+	 *
+	 * 抛出一个详细描述发生错误的BeanDefinitionParsingException异常。
+	 *
 	 * @param problem the source of the error
 	 */
 	@Override
@@ -74,6 +89,9 @@ public class FailFastProblemReporter implements ProblemReporter {
 
 	/**
 	 * Writes the supplied {@link Problem} to the {@link Log} at {@code WARN} level.
+	 *
+	 * 将给定的Problem写入WARN级别的日志。
+	 *
 	 * @param problem the source of the warning
 	 */
 	@Override

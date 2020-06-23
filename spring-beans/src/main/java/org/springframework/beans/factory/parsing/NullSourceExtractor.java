@@ -23,8 +23,12 @@ import org.springframework.lang.Nullable;
  * Simple implementation of {@link SourceExtractor} that returns {@code null}
  * as the source metadata.
  *
+ * 返回null作为源元数据的SourceExtractor接口的简单实现。
+ *
  * <p>This is the default implementation and prevents too much metadata from being
  * held in memory during normal (non-tooled) runtime usage.
+ *
+ * 这是默认的实现，并且可以避免在正常（非工具non-tooled）运行时使用期间向内存中加载过多元数据。
  *
  * @author Rob Harrop
  * @since 2.0
@@ -33,6 +37,7 @@ public class NullSourceExtractor implements SourceExtractor {
 
 	/**
 	 * This implementation simply returns {@code null} for any input.
+	 * 不管输入什么，此实现都只返回null。
 	 */
 	@Override
 	@Nullable
