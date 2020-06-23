@@ -23,7 +23,11 @@ import org.springframework.util.Assert;
  * Represents a problem with a bean definition configuration.
  * Mainly serves as common argument passed into a {@link ProblemReporter}.
  *
+ * 展示带有bean定义配置的问题对象。主要作为传递到ProblemReporter的通用参数。
+ *
  * <p>May indicate a potentially fatal problem (an error) or just a warning.
+ *
+ * 可以指明一个潜在的致命问题（错误）或仅仅是一个警告。
  *
  * @author Rob Harrop
  * @author Juergen Hoeller
@@ -45,8 +49,11 @@ public class Problem {
 
 	/**
 	 * Create a new instance of the {@link Problem} class.
-	 * @param message a message detailing the problem
-	 * @param location the location within a bean configuration source that triggered the error
+	 *
+	 * 创建一个Problem类的新实例。
+	 *
+	 * @param message a message detailing the problem 详细说明问题的消息
+	 * @param location the location within a bean configuration source that triggered the error bean配置源中触发错误的位置
 	 */
 	public Problem(String message, Location location) {
 		this(message, location, null, null);
@@ -54,8 +61,11 @@ public class Problem {
 
 	/**
 	 * Create a new instance of the {@link Problem} class.
+	 *
+	 * 创建一个Problem类的新实例。
+	 *
 	 * @param message a message detailing the problem
-	 * @param parseState the {@link ParseState} at the time of the error
+	 * @param parseState the {@link ParseState} at the time of the error 发生错误时的ParseState
 	 * @param location the location within a bean configuration source that triggered the error
 	 */
 	public Problem(String message, Location location, ParseState parseState) {
@@ -64,8 +74,11 @@ public class Problem {
 
 	/**
 	 * Create a new instance of the {@link Problem} class.
+	 *
+	 * 创建一个Problem类的新实例。
+	 *
 	 * @param message a message detailing the problem
-	 * @param rootCause the underlying exception that caused the error (may be {@code null})
+	 * @param rootCause the underlying exception that caused the error (may be {@code null}) 导致错误的基础异常
 	 * @param parseState the {@link ParseState} at the time of the error
 	 * @param location the location within a bean configuration source that triggered the error
 	 */
@@ -81,6 +94,7 @@ public class Problem {
 
 	/**
 	 * Get the message detailing the problem.
+	 * 获取详细说明错误的消息
 	 */
 	public String getMessage() {
 		return this.message;
@@ -88,6 +102,7 @@ public class Problem {
 
 	/**
 	 * Get the location within a bean configuration source that triggered the error.
+	 * 获取bean配置源中触发错误的位置。
 	 */
 	public Location getLocation() {
 		return this.location;
@@ -96,6 +111,7 @@ public class Problem {
 	/**
 	 * Get the description of the bean configuration source that triggered the error,
 	 * as contained within this Problem's Location object.
+	 * 获取bean配置源中触发错误的位置，包含在Problem的位置对象中。
 	 * @see #getLocation()
 	 */
 	public String getResourceDescription() {
@@ -104,6 +120,7 @@ public class Problem {
 
 	/**
 	 * Get the {@link ParseState} at the time of the error (may be {@code null}).
+	 * 获取发生错误时的ParseState
 	 */
 	@Nullable
 	public ParseState getParseState() {
@@ -112,6 +129,7 @@ public class Problem {
 
 	/**
 	 * Get the underlying exception that caused the error (may be {@code null}).
+	 * 获取导致错误的基础异常。
 	 */
 	@Nullable
 	public Throwable getRootCause() {

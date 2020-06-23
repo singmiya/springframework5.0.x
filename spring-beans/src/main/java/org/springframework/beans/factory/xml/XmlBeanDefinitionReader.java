@@ -55,14 +55,20 @@ import org.springframework.util.xml.XmlValidationModeDetector;
  * Delegates the actual XML document reading to an implementation
  * of the {@link BeanDefinitionDocumentReader} interface.
  *
+ * 用于XML bean定义（文件）的bean定义读取器。把实际XML文档的读取工作委托给BeanDefinitionDocumentReader接口的实现来完成。
+ *
  * <p>Typically applied to a
  * {@link org.springframework.beans.factory.support.DefaultListableBeanFactory}
  * or a {@link org.springframework.context.support.GenericApplicationContext}.
+ *
+ * 通常适用于DefaultListableBeanFactory或GenericApplicationContext。
  *
  * <p>This class loads a DOM document and applies the BeanDefinitionDocumentReader to it.
  * The document reader will register each bean definition with the given bean factory,
  * talking to the latter's implementation of the
  * {@link org.springframework.beans.factory.support.BeanDefinitionRegistry} interface.
+ *
+ * 此类加载DOM文档并使用BeanDefinitionDocumentReader对它进行读取。
  *
  * @author Juergen Hoeller
  * @author Rob Harrop
@@ -79,26 +85,32 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
 	/**
 	 * Indicates that the validation should be disabled.
+	 * 表明应禁用验证。
 	 */
 	public static final int VALIDATION_NONE = XmlValidationModeDetector.VALIDATION_NONE;
 
 	/**
 	 * Indicates that the validation mode should be detected automatically.
+	 * 表明应自动检测验证模式。
 	 */
 	public static final int VALIDATION_AUTO = XmlValidationModeDetector.VALIDATION_AUTO;
 
 	/**
 	 * Indicates that DTD validation should be used.
+	 * 表明应使用DTD验证。
 	 */
 	public static final int VALIDATION_DTD = XmlValidationModeDetector.VALIDATION_DTD;
 
 	/**
 	 * Indicates that XSD validation should be used.
+	 * 表明应该使用XSD验证。
 	 */
 	public static final int VALIDATION_XSD = XmlValidationModeDetector.VALIDATION_XSD;
 
 
-	/** Constants instance for this class */
+	/** Constants instance for this class
+	 * 解析此类的常量。
+	 */
 	private static final Constants constants = new Constants(XmlBeanDefinitionReader.class);
 
 	private int validationMode = VALIDATION_AUTO;
