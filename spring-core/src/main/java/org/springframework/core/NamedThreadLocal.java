@@ -22,6 +22,8 @@ import org.springframework.util.Assert;
  * {@link ThreadLocal} subclass that exposes a specified name
  * as {@link #toString()} result (allowing for introspection).
  *
+ * ThreadLocal的子类，它公开了指定的名称作为toString()的结果（运行内省）。
+ *
  * @author Juergen Hoeller
  * @since 2.5.2
  * @see NamedInheritableThreadLocal
@@ -33,7 +35,10 @@ public class NamedThreadLocal<T> extends ThreadLocal<T> {
 
 	/**
 	 * Create a new NamedThreadLocal with the given name.
-	 * @param name a descriptive name for this ThreadLocal
+	 *
+	 * 用给定名称黄建一个新的NamedThreadLocal
+	 *
+	 * @param name a descriptive name for this ThreadLocal 此ThreadLocal的描述性名称
 	 */
 	public NamedThreadLocal(String name) {
 		Assert.hasText(name, "Name must not be empty");
