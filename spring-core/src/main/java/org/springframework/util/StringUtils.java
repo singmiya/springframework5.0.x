@@ -884,7 +884,13 @@ public abstract class StringUtils {
 
 	/**
 	 * Copy the given {@link Collection} into a {@code String} array.
+	 *
+	 * 把给定的集合拷贝到字符串数组中。
+	 *
 	 * <p>The {@code Collection} must contain {@code String} elements only.
+	 *
+	 * 集合只能包含字符串元素。
+	 *
 	 * @param collection the {@code Collection} to copy
 	 * (potentially {@code null} or empty)
 	 * @return the resulting {@code String} array
@@ -1104,14 +1110,25 @@ public abstract class StringUtils {
 	/**
 	 * Tokenize the given {@code String} into a {@code String} array via a
 	 * {@link StringTokenizer}.
+	 *
+	 * 通过StringTokenizer把给定的字符串标记为字符串数组。
+	 *
 	 * <p>Trims tokens and omits empty tokens.
+	 *
+	 * 裁剪token并忽略空token。
+	 *
 	 * <p>The given {@code delimiters} string can consist of any number of
 	 * delimiter characters. Each of those characters can be used to separate
 	 * tokens. A delimiter is always a single character; for multi-character
 	 * delimiters, consider using {@link #delimitedListToStringArray}.
+	 *
+	 * 给定的界定符字符串可以组成任何数量的界定符。这些字符中的任何一个都可以用于分割token。界定符总是单个字符串。
+	 * 对于多字符界定符，请考虑使用delimitedListToStringArray。
+	 *
 	 * @param str the {@code String} to tokenize (potentially {@code null} or empty)
 	 * @param delimiters the delimiter characters, assembled as a {@code String}
 	 * (each of the characters is individually considered as a delimiter)
+	 *                   界定符，组成了一个字符串（每一个字符都可以当做一个单独的界定符）
 	 * @return an array of the tokens
 	 * @see java.util.StringTokenizer
 	 * @see String#trim()
@@ -1124,17 +1141,25 @@ public abstract class StringUtils {
 	/**
 	 * Tokenize the given {@code String} into a {@code String} array via a
 	 * {@link StringTokenizer}.
+	 *
+	 * 通过StringTokenizer把给定的字符串标记为字符串数组。
+	 *
 	 * <p>The given {@code delimiters} string can consist of any number of
 	 * delimiter characters. Each of those characters can be used to separate
 	 * tokens. A delimiter is always a single character; for multi-character
 	 * delimiters, consider using {@link #delimitedListToStringArray}.
+	 *
+	 * 给定的界定符字符串可以组成任何数量的界定符。这些字符中的每一个都可以用来分割token。
+	 * 界定符总是单个字符；对于多字符界定符，请考虑使用delimitedListToStringArray。
+	 *
 	 * @param str the {@code String} to tokenize (potentially {@code null} or empty)
 	 * @param delimiters the delimiter characters, assembled as a {@code String}
 	 * (each of the characters is individually considered as a delimiter)
-	 * @param trimTokens trim the tokens via {@link String#trim()}
+	 * @param trimTokens trim the tokens via {@link String#trim()} 通过String#trim()裁剪token。
 	 * @param ignoreEmptyTokens omit empty tokens from the result array
 	 * (only applies to tokens that are empty after trimming; StringTokenizer
 	 * will not consider subsequent delimiters as token in the first place).
+	 *                          省略结果数组中的空token（仅应用于裁剪后仍为空的token；StringTokenizer不会将后续的界定符作为token）
 	 * @return an array of the tokens
 	 * @see java.util.StringTokenizer
 	 * @see String#trim()

@@ -32,6 +32,8 @@ import org.springframework.lang.Nullable;
  * encapsulating all relevant configuration as well as state.
  * Nested inside an {@link XmlReaderContext}.
  *
+ * 在bean定义解析处理中传递的上下文信息，它封装了所有相关的配置和状态。嵌套在XmlReaderContext中。
+ *
  * @author Rob Harrop
  * @author Juergen Hoeller
  * @since 2.0

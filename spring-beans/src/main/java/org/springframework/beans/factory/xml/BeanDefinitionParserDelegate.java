@@ -1363,6 +1363,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Parse a custom element (outside of the default namespace).
+	 *
+	 * 解析自定义元素（命名空间之外）
+	 *
 	 * @param ele the element to parse
 	 * @return the resulting bean definition
 	 */
@@ -1373,6 +1376,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Parse a custom element (outside of the default namespace).
+	 *
+	 * 解析自定义元素（命名空间之外）
+	 *
 	 * @param ele the element to parse
 	 * @param containingBd the containing bean definition (if any)
 	 * @return the resulting bean definition
@@ -1485,9 +1491,15 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Get the namespace URI for the supplied node.
+	 *
+	 * 获取给定节点的命名空间URI
+	 *
 	 * <p>The default implementation uses {@link Node#getNamespaceURI}.
 	 * Subclasses may override the default implementation to provide a
 	 * different namespace identification mechanism.
+	 *
+	 * 默认实现使用getNamespaceURI。子类可以重写默认实现来提供不同的命名空间识别机制。
+	 *
 	 * @param node the node
 	 */
 	@Nullable
@@ -1521,6 +1533,7 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Determine whether the given URI indicates the default namespace.
+	 * 确定给定的URI是否指示默认的命名空间。
 	 */
 	public boolean isDefaultNamespace(@Nullable String namespaceUri) {
 		return (!StringUtils.hasLength(namespaceUri) || BEANS_NAMESPACE_URI.equals(namespaceUri));
@@ -1528,6 +1541,7 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Determine whether the given node indicates the default namespace.
+	 * 确定给定的节点是否指示默认的命名空间。
 	 */
 	public boolean isDefaultNamespace(Node node) {
 		return isDefaultNamespace(getNamespaceURI(node));
