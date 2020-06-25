@@ -24,6 +24,8 @@ import org.springframework.util.Assert;
 /**
  * Representation of an import that has been processed during the parsing process.
  *
+ * 表示在解析处理过程中已处理的导入。
+ *
  * @author Juergen Hoeller
  * @since 2.0
  * @see ReaderEventListener#importProcessed(ImportDefinition)
@@ -71,6 +73,7 @@ public class ImportDefinition implements BeanMetadataElement {
 
 	/**
 	 * Return the location of the imported resource.
+	 * 返回已导入资源的位置。
 	 */
 	public final String getImportedResource() {
 		return this.importedResource;

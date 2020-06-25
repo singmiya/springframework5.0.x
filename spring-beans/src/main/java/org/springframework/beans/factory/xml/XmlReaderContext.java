@@ -38,6 +38,8 @@ import org.springframework.lang.Nullable;
  * specific to use with an {@link XmlBeanDefinitionReader}. Provides access to the
  * {@link NamespaceHandlerResolver} configured in the {@link XmlBeanDefinitionReader}.
  *
+ * ReaderContext的扩展，专门用于XmlBeanDefinitionReader。提供对配置在XmlBeanDefinitionReader中的NamespaceHandlerResolver的访问。
+ *
  * @author Rob Harrop
  * @author Juergen Hoeller
  * @since 2.0
@@ -71,6 +73,7 @@ public class XmlReaderContext extends ReaderContext {
 
 	/**
 	 * Return the XML bean definition reader in use.
+	 * 返回使用中的XMLbean定义读取器。
 	 */
 	public final XmlBeanDefinitionReader getReader() {
 		return this.reader;
@@ -78,6 +81,7 @@ public class XmlReaderContext extends ReaderContext {
 
 	/**
 	 * Return the bean definition registry to use.
+	 * 返回要使用的bean定义注册表。
 	 * @see XmlBeanDefinitionReader#XmlBeanDefinitionReader(BeanDefinitionRegistry)
 	 */
 	public final BeanDefinitionRegistry getRegistry() {
@@ -88,6 +92,10 @@ public class XmlReaderContext extends ReaderContext {
 	 * Return the resource loader to use, if any.
 	 * <p>This will be non-null in regular scenarios,
 	 * also allowing access to the resource class loader.
+	 *
+	 * 如果存在，返回要使用的资源加载器。
+	 * 在正常情况下，该值不为null，并且允许范围资源类加载器。
+	 *
 	 * @see XmlBeanDefinitionReader#setResourceLoader
 	 * @see ResourceLoader#getClassLoader()
 	 */
@@ -100,6 +108,10 @@ public class XmlReaderContext extends ReaderContext {
 	 * Return the bean class loader to use, if any.
 	 * <p>Note that this will be null in regular scenarios,
 	 * as an indication to lazily resolve bean classes.
+	 *
+	 * 如果存在，返回要使用的bean类加载器。
+	 * 注意，在正常情况下，该值为null，表示延迟解析bean类。
+	 *
 	 * @see XmlBeanDefinitionReader#setBeanClassLoader
 	 */
 	@Nullable
@@ -109,6 +121,7 @@ public class XmlReaderContext extends ReaderContext {
 
 	/**
 	 * Return the environment to use.
+	 * 返回要使用的环境对象。
 	 * @see XmlBeanDefinitionReader#setEnvironment
 	 */
 	public final Environment getEnvironment() {
@@ -117,6 +130,7 @@ public class XmlReaderContext extends ReaderContext {
 
 	/**
 	 * Return the namespace resolver.
+	 * 返回命名空间解析器。
 	 * @see XmlBeanDefinitionReader#setNamespaceHandlerResolver
 	 */
 	public final NamespaceHandlerResolver getNamespaceHandlerResolver() {
@@ -128,6 +142,9 @@ public class XmlReaderContext extends ReaderContext {
 
 	/**
 	 * Call the bean name generator for the given bean definition.
+	 *
+	 * 为给定的bean定义调用bean名称生成器。
+	 *
 	 * @see XmlBeanDefinitionReader#getBeanNameGenerator()
 	 * @see org.springframework.beans.factory.support.BeanNameGenerator#generateBeanName
 	 */
@@ -138,6 +155,9 @@ public class XmlReaderContext extends ReaderContext {
 	/**
 	 * Call the bean name generator for the given bean definition
 	 * and register the bean definition under the generated name.
+	 *
+	 * 为给定bean定义调用bean名称生成器，并在生成的名字下注册bean定义。
+	 *
 	 * @see XmlBeanDefinitionReader#getBeanNameGenerator()
 	 * @see org.springframework.beans.factory.support.BeanNameGenerator#generateBeanName
 	 * @see BeanDefinitionRegistry#registerBeanDefinition
@@ -150,6 +170,9 @@ public class XmlReaderContext extends ReaderContext {
 
 	/**
 	 * Read an XML document from the given String.
+	 *
+	 * 从给定的字符串中读取XML文档。
+	 *
 	 * @see #getReader()
 	 */
 	public Document readDocumentFromString(String documentContent) {

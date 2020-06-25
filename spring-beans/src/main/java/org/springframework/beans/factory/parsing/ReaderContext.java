@@ -23,6 +23,8 @@ import org.springframework.lang.Nullable;
  * Context that gets passed along a bean definition reading process,
  * encapsulating all relevant configuration as well as state.
  *
+ * 在bean定义读取处理中传递的上下文信息，它封装了所有相关的配置和状态。
+ *
  * @author Rob Harrop
  * @author Juergen Hoeller
  * @since 2.0
@@ -153,6 +155,7 @@ public class ReaderContext {
 
 	/**
 	 * Fire an defaults-registered event.
+	 * 触发默认注册事件
 	 */
 	public void fireDefaultsRegistered(DefaultsDefinition defaultsDefinition) {
 		this.eventListener.defaultsRegistered(defaultsDefinition);
@@ -160,6 +163,7 @@ public class ReaderContext {
 
 	/**
 	 * Fire an component-registered event.
+	 * 触发组件注册事件
 	 */
 	public void fireComponentRegistered(ComponentDefinition componentDefinition) {
 		this.eventListener.componentRegistered(componentDefinition);
@@ -167,6 +171,7 @@ public class ReaderContext {
 
 	/**
 	 * Fire an alias-registered event.
+	 * 触发别名注册事件
 	 */
 	public void fireAliasRegistered(String beanName, String alias, @Nullable Object source) {
 		this.eventListener.aliasRegistered(new AliasDefinition(beanName, alias, source));
@@ -174,6 +179,7 @@ public class ReaderContext {
 
 	/**
 	 * Fire an import-processed event.
+	 * 触发导入处理事件
 	 */
 	public void fireImportProcessed(String importedResource, @Nullable Object source) {
 		this.eventListener.importProcessed(new ImportDefinition(importedResource, source));
@@ -191,6 +197,7 @@ public class ReaderContext {
 
 	/**
 	 * Return the source extractor in use.
+	 * 返回使用中的源提取器。
 	 */
 	public SourceExtractor getSourceExtractor() {
 		return this.sourceExtractor;
@@ -198,6 +205,7 @@ public class ReaderContext {
 
 	/**
 	 * Call the source extractor for the given source object.
+	 * 调用给定源对象的源提取器。
 	 * @param sourceCandidate the original source object
 	 * @return the source object to store, or {@code null} for none.
 	 * @see #getSourceExtractor()
