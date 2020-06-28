@@ -22,6 +22,8 @@ import org.springframework.lang.Nullable;
  * Interface defining a generic contract for attaching and accessing metadata
  * to/from arbitrary objects.
  *
+ * 定义用于将元数据附加到任意对象或从任意对象获取元数据的通用协定的接口。
+ *
  * @author Rob Harrop
  * @since 2.0
  */
@@ -33,6 +35,10 @@ public interface AttributeAccessor {
 	 * <p>In general, users should take care to prevent overlaps with other
 	 * metadata attributes by using fully-qualified names, perhaps using
 	 * class or package names as prefix.
+	 *
+	 * 为名称定义的属性设置所提供的值。如果值为null，则删除该属性。
+	 * 通常，用户应通过使用完全限定名称（可能使用类或包名称作为前缀）来防止与其他元数据属性重叠。
+	 *
 	 * @param name the unique attribute key
 	 * @param value the attribute value to be attached
 	 */
@@ -41,6 +47,9 @@ public interface AttributeAccessor {
 	/**
 	 * Get the value of the attribute identified by {@code name}.
 	 * Return {@code null} if the attribute doesn't exist.
+	 *
+	 * 获取由名称标识的的属性值。
+	 *
 	 * @param name the unique attribute key
 	 * @return the current value of the attribute, if any
 	 */
@@ -50,8 +59,11 @@ public interface AttributeAccessor {
 	/**
 	 * Remove the attribute identified by {@code name} and return its value.
 	 * Return {@code null} if no attribute under {@code name} is found.
-	 * @param name the unique attribute key
-	 * @return the last value of the attribute, if any
+	 *
+	 * 删除由名称标识的属性名并返回其值。如果不存在给定名称的属性，则返回null。
+	 *
+	 * @param name the unique attribute key 唯一属性键
+	 * @return the last value of the attribute, if any 如果存在，返回属性的最后一个值
 	 */
 	@Nullable
 	Object removeAttribute(String name);
@@ -59,12 +71,16 @@ public interface AttributeAccessor {
 	/**
 	 * Return {@code true} if the attribute identified by {@code name} exists.
 	 * Otherwise return {@code false}.
+	 *
+	 * 如果由名称标识的属性存在，则返回true，否则返回false。
+	 *
 	 * @param name the unique attribute key
 	 */
 	boolean hasAttribute(String name);
 
 	/**
 	 * Return the names of all attributes.
+	 * 返回所有的属性名称。
 	 */
 	String[] attributeNames();
 

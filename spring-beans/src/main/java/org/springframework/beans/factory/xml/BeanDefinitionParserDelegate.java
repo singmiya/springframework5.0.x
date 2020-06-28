@@ -239,6 +239,10 @@ public class BeanDefinitionParserDelegate {
 	 * Stores all used bean names so we can enforce uniqueness on a per
 	 * beans-element basis. Duplicate bean ids/names may not exist within the
 	 * same level of beans element nesting, but may be duplicated across levels.
+	 *
+	 * 存储所有使用过的bean名称，所以我们可以基于每个bean元素强制唯一性（处理）。
+	 * 同一级别的bean元素嵌套中，不会出现重复的 bean id或name，但是不同的级别中可以可能会重复。
+	 *
 	 */
 	private final Set<String> usedNames = new HashSet<>();
 
@@ -246,6 +250,9 @@ public class BeanDefinitionParserDelegate {
 	/**
 	 * Create a new BeanDefinitionParserDelegate associated with the supplied
 	 * {@link XmlReaderContext}.
+	 *
+	 * 创建与提供的XmlReaderContext关联的BeanDefinitionParserDelegate。
+	 *
 	 */
 	public BeanDefinitionParserDelegate(XmlReaderContext readerContext) {
 		Assert.notNull(readerContext, "XmlReaderContext must not be null");
@@ -255,6 +262,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Get the {@link XmlReaderContext} associated with this helper instance.
+	 *
+	 * 获取与此帮助实例关联的XmlReaderContext。
+	 *
 	 */
 	public final XmlReaderContext getReaderContext() {
 		return this.readerContext;
@@ -263,6 +273,9 @@ public class BeanDefinitionParserDelegate {
 	/**
 	 * Invoke the {@link org.springframework.beans.factory.parsing.SourceExtractor}
 	 * to pull the source metadata from the supplied {@link Element}.
+	 *
+	 * 调用SourceExtractor从提供的Element中提取源元数据。
+	 *
 	 */
 	@Nullable
 	protected Object extractSource(Element ele) {
@@ -271,6 +284,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Report an error with the given message for the given source element.
+	 *
+	 * 为给定的源元素使用用给定的消息报告错误。
+	 *
 	 */
 	protected void error(String message, Node source) {
 		this.readerContext.error(message, source, this.parseState.snapshot());
@@ -278,6 +294,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Report an error with the given message for the given source element.
+	 *
+	 * 为给定的源元素使用给定的消息报告错误。
+	 *
 	 */
 	protected void error(String message, Element source) {
 		this.readerContext.error(message, source, this.parseState.snapshot());
@@ -285,6 +304,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Report an error with the given message for the given source element.
+	 *
+	 * 为给定的源元素使用给定的消息报告错误。
+	 *
 	 */
 	protected void error(String message, Element source, Throwable cause) {
 		this.readerContext.error(message, source, this.parseState.snapshot(), cause);
@@ -293,6 +315,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Initialize the default settings assuming a {@code null} parent delegate.
+	 *
+	 * 假定父委托为null，初始化默认设置。
+	 *
 	 */
 	public void initDefaults(Element root) {
 		initDefaults(root, null);
@@ -303,6 +328,10 @@ public class BeanDefinitionParserDelegate {
 	 * init-method, destroy-method and merge settings. Support nested 'beans'
 	 * element use cases by falling back to the given parent in case the
 	 * defaults are not explicitly set locally.
+	 *
+	 * 初始化默认延迟初始化（lazy-init）、自动装配（autowire）、依赖检查设置，初始化方法（init-method）、销毁方法（destroy-method）和合并设置。
+	 * 未在本地明确设置默认值的情况下，通过回退到给定的父委托支持嵌套的'beans'元素用例。
+	 *
 	 * @see #populateDefaults(DocumentDefaultsDefinition, DocumentDefaultsDefinition, org.w3c.dom.Element)
 	 * @see #getDefaults()
 	 */
@@ -316,6 +345,10 @@ public class BeanDefinitionParserDelegate {
 	 * autowire, dependency check settings, init-method, destroy-method and merge settings.
 	 * Support nested 'beans' element use cases by falling back to {@code parentDefaults}
 	 * in case the defaults are not explicitly set locally.
+	 *
+	 * 使用默认lazy-init、autowire、依赖检查设置，init-method、destroy-method和合并设置填充规定的DocumentDefaultsDefinition实例。
+	 * 未在本地明确设置默认值的情况下，通过回退到parentDefaults来支持嵌套的'beans'元素用例。
+	 *
 	 * @param defaults the defaults to populate
 	 * @param parentDefaults the parent BeanDefinitionParserDelegate (if any) defaults to fall back to
 	 * @param root the root element of the current bean definition document (or nested beans element)
@@ -324,6 +357,7 @@ public class BeanDefinitionParserDelegate {
 		String lazyInit = root.getAttribute(DEFAULT_LAZY_INIT_ATTRIBUTE);
 		if (isDefaultValue(lazyInit)) {
 			// Potentially inherited from outer <beans> sections, otherwise falling back to false.
+			// 可能继承自外部<beans>部分，否则回退到false。
 			lazyInit = (parentDefaults != null ? parentDefaults.getLazyInit() : FALSE_VALUE);
 		}
 		defaults.setLazyInit(lazyInit);
@@ -368,6 +402,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Return the defaults definition object.
+	 *
+	 * 返回默认定义对象。
+	 *
 	 */
 	public DocumentDefaultsDefinition getDefaults() {
 		return this.defaults;
@@ -376,6 +413,9 @@ public class BeanDefinitionParserDelegate {
 	/**
 	 * Return the default settings for bean definitions as indicated within
 	 * the attributes of the top-level {@code <beans/>} element.
+	 *
+	 * 返回顶层<beans/>元素的属性中指示的bean定义的默认设置。
+	 *
 	 */
 	public BeanDefinitionDefaults getBeanDefinitionDefaults() {
 		BeanDefinitionDefaults bdd = new BeanDefinitionDefaults();
@@ -389,6 +429,9 @@ public class BeanDefinitionParserDelegate {
 	/**
 	 * Return any patterns provided in the 'default-autowire-candidates'
 	 * attribute of the top-level {@code <beans/>} element.
+	 *
+	 * 返回顶层<beans/>元素的'default-autowire-candidates'属性中提供的任何模式。
+	 *
 	 */
 	@Nullable
 	public String[] getAutowireCandidatePatterns() {
@@ -401,6 +444,9 @@ public class BeanDefinitionParserDelegate {
 	 * Parses the supplied {@code <bean>} element. May return {@code null}
 	 * if there were errors during parse. Errors are reported to the
 	 * {@link org.springframework.beans.factory.parsing.ProblemReporter}.
+	 *
+	 * 解析提供的<bean>元素。如果在解析期间出现错误，返回null。错误会报告给ProblemReporter。
+	 *
 	 */
 	@Nullable
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele) {
@@ -411,6 +457,9 @@ public class BeanDefinitionParserDelegate {
 	 * Parses the supplied {@code <bean>} element. May return {@code null}
 	 * if there were errors during parse. Errors are reported to the
 	 * {@link org.springframework.beans.factory.parsing.ProblemReporter}.
+	 *
+	 * 解析提供的<bean>元素。如果在解析期间出现错误，返回null。错误会报告给ProblemReporter。
+	 *
 	 */
 	@Nullable
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele, @Nullable BeanDefinition containingBean) {
