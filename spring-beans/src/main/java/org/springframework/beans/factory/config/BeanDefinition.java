@@ -26,9 +26,14 @@ import org.springframework.lang.Nullable;
  * constructor argument values, and further information supplied by
  * concrete implementations.
  *
+ * BeanDefinition描述了一个bean实例，此实例具有属性值，构造参数值以及具体实现提供的更多信息。
+ *
  * <p>This is just a minimal interface: The main intention is to allow a
  * {@link BeanFactoryPostProcessor} such as {@link PropertyPlaceholderConfigurer}
  * to introspect and modify property values and other bean metadata.
+ *
+ * 这是仅是一个简化的接口：主要目的是允许注入PropertyPlaceholderConfigurer之类的BeanFactoryPostProcessor进行内部检查（introspect）并
+ * 修改属性值和其他bean元数据。
  *
  * @author Juergen Hoeller
  * @author Rob Harrop
@@ -42,6 +47,10 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Scope identifier for the standard singleton scope: "singleton".
 	 * <p>Note that extended bean factories might support further scopes.
+	 *
+	 * 用于标准单例作用域的作用域标识："singleton"。
+	 * 注意，扩展bean工厂可能支持更多作用域。
+	 *
 	 * @see #setScope
 	 */
 	String SCOPE_SINGLETON = ConfigurableBeanFactory.SCOPE_SINGLETON;
@@ -49,6 +58,10 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Scope identifier for the standard prototype scope: "prototype".
 	 * <p>Note that extended bean factories might support further scopes.
+	 *
+	 * 用于标准原型作用域的作用域标识："prototype"。
+	 * 注意，扩展bean工厂可能支持更多作用域。
+	 *
 	 * @see #setScope
 	 */
 	String SCOPE_PROTOTYPE = ConfigurableBeanFactory.SCOPE_PROTOTYPE;
@@ -57,6 +70,9 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	/**
 	 * Role hint indicating that a {@code BeanDefinition} is a major part
 	 * of the application. Typically corresponds to a user-defined bean.
+	 *
+	 * 角色提示，只是BeanDefinition是应用的主要部分。通常对应于用户定义的bean。
+	 *
 	 */
 	int ROLE_APPLICATION = 0;
 
@@ -68,6 +84,11 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * of when looking more closely at a particular
 	 * {@link org.springframework.beans.factory.parsing.ComponentDefinition},
 	 * but not when looking at the overall configuration of an application.
+	 *
+	 * 角色提示，指示BeanDefinition是某些较大配置的支持部分，通常是外部ComponentDefinition。
+	 * 当更仔细的查看特定的ComponentDefinition时，SUPPORT bean被认为是足够重要，足以引起注意，
+	 * 但是在查看应用的整体配置时却没有。
+	 *
 	 */
 	int ROLE_SUPPORT = 1;
 
@@ -76,6 +97,10 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * entirely background role and has no relevance to the end-user. This hint is
 	 * used when registering beans that are completely part of the internal workings
 	 * of a {@link org.springframework.beans.factory.parsing.ComponentDefinition}.
+	 *
+	 * 角色提示，指示BeanDefinition提供了完全的后台角色，与最终用户无关。
+	 * 当注册完全属于ComponentDefinition内部工作一部分的bean时，使用此提示。
+	 *
 	 */
 	int ROLE_INFRASTRUCTURE = 2;
 
@@ -84,19 +109,27 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 
 	/**
 	 * Set the name of the parent definition of this bean definition, if any.
+	 * 如果存在，设置此bean定义的父定义名称。
 	 */
 	void setParentName(@Nullable String parentName);
 
 	/**
 	 * Return the name of the parent definition of this bean definition, if any.
+	 * 如果存在，返回此bean定义的父定义名称。
 	 */
 	@Nullable
 	String getParentName();
 
 	/**
 	 * Specify the bean class name of this bean definition.
+	 *
+	 * 为此bean定义指定bean类名。
+	 *
 	 * <p>The class name can be modified during bean factory post-processing,
 	 * typically replacing the original class name with a parsed variant of it.
+	 *
+	 * 在bean工厂执行后置处理期间，可以修改类名，通常，使用bean类名解析的变体替换原始类名。
+	 *
 	 * @see #setParentName
 	 * @see #setFactoryBeanName
 	 * @see #setFactoryMethodName
@@ -105,12 +138,18 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 
 	/**
 	 * Return the current bean class name of this bean definition.
+	 *
+	 * 返回此bean定义的当前bean类名。
+	 *
 	 * <p>Note that this does not have to be the actual class name used at runtime, in
 	 * case of a child definition overriding/inheriting the class name from its parent.
 	 * Also, this may just be the class that a factory method is called on, or it may
 	 * even be empty in case of a factory bean reference that a method is called on.
 	 * Hence, do <i>not</i> consider this to be the definitive bean type at runtime but
 	 * rather only use it for parsing purposes at the individual bean definition level.
+	 *
+	 * 注意，在子定义覆盖/继承，这不不必是运行时使用的实际类名，
+	 *
 	 * @see #getParentName()
 	 * @see #getFactoryBeanName()
 	 * @see #getFactoryMethodName()
