@@ -1428,7 +1428,7 @@ public class BeanDefinitionParserDelegate {
 	/**
 	 * Parse a custom element (outside of the default namespace).
 	 *
-	 * 解析自定义元素（命名空间之外）
+	 * 解析自定义元素（命名空间之外）。
 	 *
 	 * @param ele the element to parse
 	 * @param containingBd the containing bean definition (if any)
@@ -1450,6 +1450,9 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Decorate the given bean definition through a namespace handler, if applicable.
+	 *
+	 * 如果适用，则通过命名空间处理器装饰给定的bean定义。
+	 *
 	 * @param ele the current element
 	 * @param originalDef the current bean definition
 	 * @return the decorated bean definition
@@ -1460,9 +1463,12 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Decorate the given bean definition through a namespace handler, if applicable.
+	 *
+	 * 如果适用，则通过命名空间处理器修饰给定的bean定义。
+	 *
 	 * @param ele the current element
-	 * @param originalDef the current bean definition
-	 * @param containingBd the containing bean definition (if any)
+	 * @param originalDef the current bean definition 当前bean定义
+	 * @param containingBd the containing bean definition (if any) 包含的bean定义
 	 * @return the decorated bean definition
 	 */
 	public BeanDefinitionHolder decorateBeanDefinitionIfRequired(
@@ -1471,6 +1477,7 @@ public class BeanDefinitionParserDelegate {
 		BeanDefinitionHolder finalDefinition = originalDef;
 
 		// Decorate based on custom attributes first.
+		// 首先，基于自定义属性进行装饰
 		NamedNodeMap attributes = ele.getAttributes();
 		for (int i = 0; i < attributes.getLength(); i++) {
 			Node node = attributes.item(i);
@@ -1478,6 +1485,7 @@ public class BeanDefinitionParserDelegate {
 		}
 
 		// Decorate based on custom nested elements.
+		// 基于内嵌元素进行装饰。
 		NodeList children = ele.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
@@ -1491,6 +1499,9 @@ public class BeanDefinitionParserDelegate {
 	/**
 	 * Decorate the given bean definition through a namespace handler,
 	 * if applicable.
+	 *
+	 * 如果适用，则通过命名空间处理器修饰给定的bean定义。
+	 *
 	 * @param node the current child node
 	 * @param originalDef the current bean definition
 	 * @param containingBd the containing bean definition (if any)
@@ -1560,9 +1571,15 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Get the local name for the supplied {@link Node}.
+	 *
+	 * 获取指定Node的本地名称。
+	 *
 	 * <p>The default implementation calls {@link Node#getLocalName}.
 	 * Subclasses may override the default implementation to provide a
 	 * different mechanism for getting the local name.
+	 *
+	 * 调用getLocalName的默认实现。子类可以冲洗默认实现，以提供获取本地名称的不同机制。
+	 *
 	 * @param node the {@code Node}
 	 */
 	public String getLocalName(Node node) {
@@ -1571,10 +1588,19 @@ public class BeanDefinitionParserDelegate {
 
 	/**
 	 * Determine whether the name of the supplied node is equal to the supplied name.
+	 *
+	 * 确定给定节点的名称是否与给定的名称相同。
+	 *
 	 * <p>The default implementation checks the supplied desired name against both
 	 * {@link Node#getNodeName()} and {@link Node#getLocalName()}.
+	 *
+	 * 默认实现使用Node.getNodeName()和Node.getLocalName()来检查给定的所需名称。
+	 *
 	 * <p>Subclasses may override the default implementation to provide a different
 	 * mechanism for comparing node names.
+	 *
+	 * 子类可以重写默认实现，以提供比较节点名称的不同机制。
+	 *
 	 * @param node the node to compare
 	 * @param desiredName the name to check for
 	 */
