@@ -22,6 +22,8 @@ import org.springframework.lang.Nullable;
  * Simple strategy interface for resolving a String value.
  * Used by {@link org.springframework.beans.factory.config.ConfigurableBeanFactory}.
  *
+ * 用于解析字符串值的简单策略接口。由ConfigurableBeanFactory使用。
+ *
  * @author Juergen Hoeller
  * @since 2.5
  * @see org.springframework.beans.factory.config.ConfigurableBeanFactory#resolveAliases
@@ -33,10 +35,14 @@ public interface StringValueResolver {
 
 	/**
 	 * Resolve the given String value, for example parsing placeholders.
-	 * @param strVal the original String value (never {@code null})
+	 *
+	 * 解析给定的字符串值，例如，解析占位符。
+	 *
+	 * @param strVal the original String value (never {@code null}) 原始字符串值（不为空）
 	 * @return the resolved String value (may be {@code null} when resolved to a null
 	 * value), possibly the original String value itself (in case of no placeholders
 	 * to resolve or when ignoring unresolvable placeholders)
+	 * 解析过的字符串值（当解析出的值为null是，则返回null），可能是字串值本身（在没有占位符要解析的情况下或当忽略不可解析的占位符时）。
 	 * @throws IllegalArgumentException in case of an unresolvable String value
 	 */
 	@Nullable
