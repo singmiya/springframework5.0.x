@@ -53,7 +53,7 @@ public class BeanDefinitionReaderUtils {
 	 * Create a new GenericBeanDefinition for the given parent name and class name,
 	 * eagerly loading the bean class if a ClassLoader has been specified.
 	 *
-	 *
+	 * 为给定的父名称类名称创建新的GenericBeanDefinition，如果指定了ClassLoader，则积极加载bean类。
 	 *
 	 * @param parentName the name of the parent bean, if any
 	 * @param className the name of the bean class, if any
@@ -81,9 +81,13 @@ public class BeanDefinitionReaderUtils {
 	/**
 	 * Generate a bean name for the given top-level bean definition,
 	 * unique within the given bean factory.
-	 * @param beanDefinition the bean definition to generate a bean name for
+	 *
+	 * 为给定的顶层bean定义生成bean名称，在给定的bean工厂中是唯一的。
+	 *
+	 * @param beanDefinition the bean definition to generate a bean name for 要生成bean名称的bean定义
 	 * @param registry the bean factory that the definition is going to be
 	 * registered with (to check for existing bean names)
+	 *                 要将定义注册到的bean工厂
 	 * @return the generated bean name
 	 * @throws BeanDefinitionStoreException if no unique name can be generated
 	 * for the given bean definition
@@ -98,12 +102,16 @@ public class BeanDefinitionReaderUtils {
 	/**
 	 * Generate a bean name for the given bean definition, unique within the
 	 * given bean factory.
+	 *
+	 * 为给定的顶层bean定义生成bean名称，在给定的bean工厂中是唯一的。
+	 *
 	 * @param definition the bean definition to generate a bean name for
 	 * @param registry the bean factory that the definition is going to be
 	 * registered with (to check for existing bean names)
 	 * @param isInnerBean whether the given bean definition will be registered
 	 * as inner bean or as top-level bean (allowing for special name generation
 	 * for inner beans versus top-level beans)
+	 *                    是否要把给定的bean定义注册为内部bean或顶层bean（允许未内部bean和顶层bean生成特殊名称）
 	 * @return the generated bean name
 	 * @throws BeanDefinitionStoreException if no unique name can be generated
 	 * for the given bean definition
@@ -145,8 +153,11 @@ public class BeanDefinitionReaderUtils {
 
 	/**
 	 * Register the given bean definition with the given bean factory.
-	 * @param definitionHolder the bean definition including name and aliases
-	 * @param registry the bean factory to register with
+	 *
+	 * 将给定的bean定义注册到给定的bean工厂中。
+	 *
+	 * @param definitionHolder the bean definition including name and aliases 包含名称和别名的bean定义
+	 * @param registry the bean factory to register with 要注册到的bean工厂
 	 * @throws BeanDefinitionStoreException if registration failed
 	 */
 	public static void registerBeanDefinition(
@@ -154,10 +165,12 @@ public class BeanDefinitionReaderUtils {
 			throws BeanDefinitionStoreException {
 
 		// Register bean definition under primary name.
+		// 在主名称下注册bean定义
 		String beanName = definitionHolder.getBeanName();
 		registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
 
 		// Register aliases for bean name, if any.
+		// 如果存在，为bean名称注册别名。
 		String[] aliases = definitionHolder.getAliases();
 		if (aliases != null) {
 			for (String alias : aliases) {
@@ -169,6 +182,9 @@ public class BeanDefinitionReaderUtils {
 	/**
 	 * Register the given bean definition with a generated name,
 	 * unique within the given bean factory.
+	 *
+	 * 用生成的名称注册给定的bean定义，生成的名称在给定的bean工厂中是唯一的。
+	 *
 	 * @param definition the bean definition to generate a bean name for
 	 * @param registry the bean factory to register with
 	 * @return the generated bean name
