@@ -36,19 +36,28 @@ import org.springframework.lang.Nullable;
  * {@link org.springframework.beans.factory.FactoryBean} instances,
  * integrated with {@link DefaultSingletonBeanRegistry}'s singleton management.
  *
+ * 支持单例注册表（单例注册表需要处理FactoryBean实例）的基类，并集成了DefaultSingletonBeanFactory的单例管理。
+ *
  * <p>Serves as base class for {@link AbstractBeanFactory}.
+ *
+ * 作为AbstractBeanFactory的基类。
  *
  * @author Juergen Hoeller
  * @since 2.5.1
  */
 public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry {
 
-	/** Cache of singleton objects created by FactoryBeans: FactoryBean name --> object */
+	/** Cache of singleton objects created by FactoryBeans: FactoryBean name --> object
+	 * 缓存由FactoryBeans创建的单例对象：FactoryBean name --> object
+	 */
 	private final Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<>(16);
 
 
 	/**
 	 * Determine the type for the given FactoryBean.
+	 *
+	 * 确定所给FactoryBean的类型。
+	 *
 	 * @param factoryBean the FactoryBean instance to check
 	 * @return the FactoryBean's object type,
 	 * or {@code null} if the type cannot be determined yet
@@ -75,6 +84,9 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 	/**
 	 * Obtain an object to expose from the given FactoryBean, if available
 	 * in cached form. Quick check for minimal synchronization.
+	 *
+	 * 如果可用缓存形式，从给定的FactoryBean中获取要公开的对象。快速检查最小同步。
+	 *
 	 * @param beanName the name of the bean
 	 * @return the object obtained from the FactoryBean,
 	 * or {@code null} if not available
@@ -86,6 +98,9 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 
 	/**
 	 * Obtain an object to expose from the given FactoryBean.
+	 *
+	 * 从给定的FactoryBean中获取要公开的对象。
+	 *
 	 * @param factory the FactoryBean instance
 	 * @param beanName the name of the bean
 	 * @param shouldPostProcess whether the bean is subject to post-processing
@@ -147,6 +162,9 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 
 	/**
 	 * Obtain an object to expose from the given FactoryBean.
+	 *
+	 * 从给定的FactoryBean中获取要公开的对象。
+	 *
 	 * @param factory the FactoryBean instance
 	 * @param beanName the name of the bean
 	 * @return the object obtained from the FactoryBean
@@ -193,8 +211,14 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 	/**
 	 * Post-process the given object that has been obtained from the FactoryBean.
 	 * The resulting object will get exposed for bean references.
+	 *
+	 * 对从FactoryBean获取的给定对象进行后置处理。结果对象将暴露给bean引用。
+	 *
 	 * <p>The default implementation simply returns the given object as-is.
 	 * Subclasses may override this, for example, to apply post-processors.
+	 *
+	 * 默认实现只是简单的返回给定的原样对象。
+	 *
 	 * @param object the object obtained from the FactoryBean.
 	 * @param beanName the name of the bean
 	 * @return the object to expose
