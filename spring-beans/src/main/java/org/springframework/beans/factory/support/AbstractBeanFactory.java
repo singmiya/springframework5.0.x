@@ -84,6 +84,9 @@ import org.springframework.util.StringValueResolver;
  * as base class for bean factory implementations which obtain bean definitions
  * from some backend resource (where bean definition access is an expensive operation).
  *
+ * BeanFactory实现的抽象基类，提供了ConfigurableBeanFactory SPI的完整功能。不假定可列出的bean工厂：
+ * 因此也可用于某些从后端资源（获取bean定义是一个代价极大的操作）获取本定义的bean工厂实现的基类。
+ *
  * <p>This class provides a singleton cache (through its base class
  * {@link org.springframework.beans.factory.support.DefaultSingletonBeanRegistry},
  * singleton/prototype determination, {@link org.springframework.beans.factory.FactoryBean}
@@ -92,6 +95,8 @@ import org.springframework.util.StringValueResolver;
  * interface, custom destroy methods). Furthermore, it can manage a bean factory
  * hierarchy (delegating to the parent in case of an unknown bean), through implementing
  * the {@link org.springframework.beans.factory.HierarchicalBeanFactory} interface.
+ *
+ * 此类提供单例缓存。
  *
  * <p>The main template methods to be implemented by subclasses are
  * {@link #getBeanDefinition} and {@link #createBean}, retrieving a bean definition
