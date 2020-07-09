@@ -45,6 +45,8 @@ import org.springframework.lang.Nullable;
  * Miscellaneous {@code java.lang.Class} utility methods.
  * Mainly for internal use within the framework.
  *
+ * 繁杂的Class工具方法。主要用于框架内部。
+ *
  * @author Juergen Hoeller
  * @author Keith Donald
  * @author Rob Harrop
@@ -165,11 +167,18 @@ public abstract class ClassUtils {
 	 * Return the default ClassLoader to use: typically the thread context
 	 * ClassLoader, if available; the ClassLoader that loaded the ClassUtils
 	 * class will be used as fallback.
+	 *
+	 * 返回要使用的默认ClassLoader：通常是线程上下文ClassLoader（如果可用）；加载ClassUtils类的ClassLoader将用作后备。
+	 *
 	 * <p>Call this method if you intend to use the thread context ClassLoader
 	 * in a scenario where you clearly prefer a non-null ClassLoader reference:
 	 * for example, for class path resource loading (but not necessarily for
 	 * {@code Class.forName}, which accepts a {@code null} ClassLoader
 	 * reference as well).
+	 *
+	 * 如果你打算在明确需要非空ClassLoader引用的情况下使用线程上下文ClassLoader，请调用此方法：
+	 * 如：类路径资源加载（但对于不一定适用于Class.forName，它也可以接受空的ClassLoader引用）。
+	 *
 	 * @return the default ClassLoader (only {@code null} if even the system
 	 * ClassLoader isn't accessible)
 	 * @see Thread#getContextClassLoader()
