@@ -300,6 +300,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		Object bean;
 
 		// Eagerly check singleton cache for manually registered singletons.
+		// 仔细检查单例缓存是否有手动注册的单例
 		Object sharedInstance = getSingleton(beanName);
 		if (sharedInstance != null && args == null) {
 			if (logger.isDebugEnabled()) {
@@ -1182,6 +1183,9 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	/**
 	 * Return the bean name, stripping out the factory dereference prefix if necessary,
 	 * and resolving aliases to canonical names.
+	 *
+	 * 返回名称，必要时去掉工厂"解引用"（dereference）前缀。
+	 *
 	 * @param name the user-specified name
 	 * @return the transformed bean name
 	 */
@@ -1672,16 +1676,20 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	/**
 	 * Get the object for the given bean instance, either the bean
 	 * instance itself or its created object in case of a FactoryBean.
-	 * @param beanInstance the shared bean instance
-	 * @param name name that may include factory dereference prefix
-	 * @param beanName the canonical bean name
-	 * @param mbd the merged bean definition
+	 *
+	 * 获取给定bean实例的对象，如果是FactoryBean，则返回bean实例自身或它创建的对象。
+	 *
+	 * @param beanInstance the shared bean instance 共享bean实例
+	 * @param name name that may include factory dereference prefix 可能包含工厂"解引用"（dereference）前缀的名称
+	 * @param beanName the canonical bean name 标准bean名称
+	 * @param mbd the merged bean definition 合并的bean定义
 	 * @return the object to expose for the bean
 	 */
 	protected Object getObjectForBeanInstance(
 			Object beanInstance, String name, String beanName, @Nullable RootBeanDefinition mbd) {
 
 		// Don't let calling code try to dereference the factory if the bean isn't a factory.
+		// 如果bean不是一个工厂，不要让调用代码尝试"解引用"（dereference）工厂
 		if (BeanFactoryUtils.isFactoryDereference(name)) {
 			if (beanInstance instanceof NullBean) {
 				return beanInstance;
@@ -1692,8 +1700,10 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		}
 
 		// Now we have the bean instance, which may be a normal bean or a FactoryBean.
+		// 现在我们已有了正常bean或FactoryBean bean实例。
 		// If it's a FactoryBean, we use it to create a bean instance, unless the
 		// caller actually wants a reference to the factory.
+		// 如果它是FactoryBean，我们可用它创建bean实例，除非调用者实际上想要工厂的引用。
 		if (!(beanInstance instanceof FactoryBean) || BeanFactoryUtils.isFactoryDereference(name)) {
 			return beanInstance;
 		}
@@ -1704,8 +1714,10 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		}
 		if (object == null) {
 			// Return bean instance from factory.
+			// 从工厂中返回bean实例。
 			FactoryBean<?> factory = (FactoryBean<?>) beanInstance;
 			// Caches object obtained from FactoryBean if it is a singleton.
+			// 如果是单例，则FactoryBean缓存从FactoryBean中获取的对象
 			if (mbd == null && containsBeanDefinition(beanName)) {
 				mbd = getMergedLocalBeanDefinition(beanName);
 			}
@@ -1778,18 +1790,29 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 	//---------------------------------------------------------------------
 	// Abstract methods to be implemented by subclasses
+	// 由子类实现的抽象方法
 	//---------------------------------------------------------------------
 
 	/**
 	 * Check if this bean factory contains a bean definition with the given name.
 	 * Does not consider any hierarchy this factory may participate in.
 	 * Invoked by {@code containsBean} when no cached singleton instance is found.
+	 *
+	 * 检查此bean工厂是否包含给定名称的bean定义。
+	 * 不考虑此工厂设计的任何层次结构。
+	 * 当未找到缓存单例实例时，由containsBean调用。
+	 *
 	 * <p>Depending on the nature of the concrete bean factory implementation,
 	 * this operation might be expensive (for example, because of directory lookups
 	 * in external registries). However, for listable bean factories, this usually
 	 * just amounts to a local hash lookup: The operation is therefore part of the
 	 * public interface there. The same implementation can serve for both this
 	 * template method and the public interface method in that case.
+	 *
+	 * 取决于具体bean工厂实现的性质，此操作可能代价比较高（例如，由于直接在外部注册表中查找）。
+	 * 然而，对于可列表化的bean工厂，这通常只相当于本地哈希查找：因此，该操作是公共接口的一部分。
+	 * 在这种情况下，此模板方法和公共接口方法都可以使用相同的实现。
+	 *
 	 * @param beanName the name of the bean to look for
 	 * @return if this bean factory contains a bean definition with the given name
 	 * @see #containsBean

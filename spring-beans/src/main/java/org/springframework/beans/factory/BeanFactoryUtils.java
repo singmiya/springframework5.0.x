@@ -33,10 +33,14 @@ import org.springframework.util.StringUtils;
  * Convenience methods operating on bean factories, in particular
  * on the {@link ListableBeanFactory} interface.
  *
+ * 操作bean工厂的遍历方法，特别是在ListableBeanFactory接口上。
+ *
  * <p>Returns bean counts, bean names or bean instances,
  * taking into account the nesting hierarchy of a bean factory
  * (which the methods defined on the ListableBeanFactory interface don't,
  * in contrast to the methods defined on the BeanFactory interface).
+ *
+ * 返回bean计数，bean名称或bean实例，同时会把bean工厂的嵌套层次结构考虑在内（ListableBeanFactory接口定义的方法与BeanFactory接口定义的方法不同）。
  *
  * @author Rod Johnson
  * @author Juergen Hoeller
@@ -55,6 +59,9 @@ public abstract class BeanFactoryUtils {
 	/**
 	 * Return whether the given name is a factory dereference
 	 * (beginning with the factory dereference prefix).
+	 *
+	 * 返回给定的名称是否是工厂"解引用"（以工厂"解引用"前缀开头）。
+	 *
 	 * @param name the name of the bean
 	 * @return whether the given name is a factory dereference
 	 * @see BeanFactory#FACTORY_BEAN_PREFIX

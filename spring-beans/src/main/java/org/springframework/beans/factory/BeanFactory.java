@@ -152,8 +152,12 @@ public interface BeanFactory {
 	 * {@code myJndiObject} is a FactoryBean, getting {@code &myJndiObject}
 	 * will return the factory, not the instance returned by the factory.
 	 *
-	 * 用于取消FactoryBean实例引用，其区别于由FactoryBean创建的beans。
+	 * 用于FactoryBean实例"解引用"，其区别于由FactoryBean创建的beans。
 	 * 例如：如果名为myJndiObject的bean类型为FactoryBean，获取 &myJndiObject将会返回一个factory，而不是由factory返回的（其他类型bean）实例。
+	 *
+	 *
+	 * 注："解引用"：在Java中，return null 是否安全， 为什么？ - RednaxelaFX的回答 - 知乎
+	 * https://www.zhihu.com/question/47997295/answer/108624397
 	 *
 	 */
 	String FACTORY_BEAN_PREFIX = "&";

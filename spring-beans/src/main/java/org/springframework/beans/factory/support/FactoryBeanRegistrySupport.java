@@ -85,7 +85,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 	 * Obtain an object to expose from the given FactoryBean, if available
 	 * in cached form. Quick check for minimal synchronization.
 	 *
-	 * 如果可用缓存形式，从给定的FactoryBean中获取要公开的对象。快速检查最小同步。
+	 * 如果缓存形式可用，则从给定的FactoryBean中获取要公开的对象。快速检查最小同步。
 	 *
 	 * @param beanName the name of the bean
 	 * @return the object obtained from the FactoryBean,
