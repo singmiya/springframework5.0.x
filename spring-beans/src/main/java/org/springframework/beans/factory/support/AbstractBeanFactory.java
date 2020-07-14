@@ -955,6 +955,9 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	/**
 	 * Return whether this factory holds a DestructionAwareBeanPostProcessor
 	 * that will get applied to singleton beans on shutdown.
+	 *
+	 * 返回此工厂是否持有在宕机时应用于单例bean的DestructionAwareBeanPostProcessor。
+	 *
 	 * @see #addBeanPostProcessor
 	 * @see org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor
 	 */
@@ -1747,6 +1750,9 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * Determine whether the given bean name is already in use within this factory,
 	 * i.e. whether there is a local bean or alias registered under this name or
 	 * an inner bean created with this name.
+	 *
+	 * 确定给定的bean名称是否已在此工厂中使用，即，是否已在在该名称下注册了本地bean或别名，或是否已使用此名称创建了内部bean。
+	 *
 	 * @param beanName the name to check
 	 */
 	public boolean isBeanNameInUse(String beanName) {
@@ -1755,8 +1761,14 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 	/**
 	 * Determine whether the given bean requires destruction on shutdown.
+	 *
+	 * 确定给定bean是否需要在宕机时销毁。
+	 *
 	 * <p>The default implementation checks the DisposableBean interface as well as
 	 * a specified destroy method and registered DestructionAwareBeanPostProcessors.
+	 *
+	 * 默认实现检查DisposableBean接口，同时制定销毁方法并注册DestructionAwareBeanPostProcessors。
+	 *
 	 * @param bean the bean instance to check
 	 * @param mbd the corresponding bean definition
 	 * @see org.springframework.beans.factory.DisposableBean
