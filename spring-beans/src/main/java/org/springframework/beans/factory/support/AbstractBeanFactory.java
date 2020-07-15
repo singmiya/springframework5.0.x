@@ -172,7 +172,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	private TypeConverter typeConverter;
 
 	/** String resolvers to apply e.g. to annotation attribute values
-	 * 要应用的String解析器，即，注解属性值
+	 * 要应用的String解析器，例如，注解属性值
 	 */
 	private final List<StringValueResolver> embeddedValueResolvers = new CopyOnWriteArrayList<>();
 

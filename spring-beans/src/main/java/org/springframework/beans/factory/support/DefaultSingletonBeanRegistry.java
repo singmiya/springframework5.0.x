@@ -190,7 +190,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * <p>To be called for eager registration of singletons, e.g. to be able to
 	 * resolve circular references.
 	 *
-	 * 单例"饥饿"注册时调用，即，可以解决循环引用。
+	 * 单例"饥饿"注册时调用，例如，可以解决循环引用。
 	 *
 	 * @param beanName the name of the bean
 	 * @param singletonFactory the factory for the singleton object
@@ -313,7 +313,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * Register an Exception that happened to get suppressed during the creation of a
 	 * singleton bean instance, e.g. a temporary circular reference resolution problem.
 	 *
-	 * 注册一个在单例bean实例创建期间被抑制的异常，即，临时循环引用解决问题。
+	 * 注册一个在单例bean实例创建期间被抑制的异常，例如，临时循环引用解决问题。
 	 *
 	 * @param ex the Exception to register
 	 */
@@ -456,7 +456,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * Register a containment relationship between two beans,
 	 * e.g. between an inner bean and its containing outer bean.
 	 *
-	 * 注册两个bean之间的包含关系，即，在内部bean及它包含的外部bean之间。
+	 * 注册两个bean之间的包含关系，例如，在内部bean及它包含的外部bean之间。
 	 *
 	 * <p>Also registers the containing bean as dependent on the contained bean
 	 * in terms of destruction order.
