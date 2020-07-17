@@ -28,7 +28,11 @@ import org.springframework.util.StringUtils;
  * Support class for {@link AttributeAccessor AttributeAccessors}, providing
  * a base implementation of all methods. To be extended by subclasses.
  *
+ * AttributeAccessors的支持类，提供所有方法的基础实现。由子类继承。
+ *
  * <p>{@link Serializable} if subclasses and all attribute values are {@link Serializable}.
+ *
+ * 如果子类和所有属性值都可序列化，则可以序列化。
  *
  * @author Rob Harrop
  * @author Juergen Hoeller
@@ -80,6 +84,9 @@ public abstract class AttributeAccessorSupport implements AttributeAccessor, Ser
 
 	/**
 	 * Copy the attributes from the supplied AttributeAccessor to this accessor.
+	 *
+	 * 从提供的AttributeAccessor中拷贝属性值到此存取器。
+	 *
 	 * @param source the AttributeAccessor to copy from
 	 */
 	protected void copyAttributesFrom(AttributeAccessor source) {

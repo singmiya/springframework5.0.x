@@ -89,12 +89,19 @@ public interface BeanPostProcessor {
 	 * post-processor can decide whether to apply to either the FactoryBean or created
 	 * objects or both through corresponding {@code bean instanceof FactoryBean} checks.
 	 *
-	 *
+	 * 对于FactoryBean，FactoryBean实例和由FactoryBean创建的对象（从Spring 2.0开始）都将调用此回调。
+	 * 后置处理器可以通过检查相应的FactoryBean类型的bean，来确定是否将其应用于FactoryBean还是由其创建的对象，或者两者都应用。
 	 *
 	 * <p>This callback will also be invoked after a short-circuiting triggered by a
 	 * {@link InstantiationAwareBeanPostProcessor#postProcessBeforeInstantiation} method,
 	 * in contrast to all other BeanPostProcessor callbacks.
+	 *
+	 * 与所有其他BeanPostProcessor回调相反，此回调还将在postProcessBeforeInstantiation方法触发短路（short-circuiting）后被调用。
+	 *
 	 * <p>The default implementation returns the given {@code bean} as-is.
+	 *
+	 * 默认实现按原样返回给定bean。
+	 *
 	 * @param bean the new bean instance
 	 * @param beanName the name of the bean
 	 * @return the bean instance to use, either the original or a wrapped one;
